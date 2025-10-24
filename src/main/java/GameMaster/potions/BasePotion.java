@@ -1,4 +1,4 @@
-package basicmod.potions;
+package GameMaster.potions;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;

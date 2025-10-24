@@ -1,6 +1,6 @@
-package basicmod.util;
+package GameMaster.util;
 
-import static basicmod.BasicMod.audioPath;
+import static GameMaster.BasicMod.audioPath;
 
 public class Sounds {
     public static String TEST_SOUND = audioPath("test.wav"); //Load audio using a given path

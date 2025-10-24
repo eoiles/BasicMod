@@ -1,4 +1,4 @@
-package basicmod.util;
+package GameMaster.util;
 
 import basemod.helpers.KeywordColorInfo;
 
