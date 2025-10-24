@@ -25,6 +25,9 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 
 import java.util.ArrayList;
 
+import static GameMaster.BasicMod.characterPath;
+import static GameMaster.BasicMod.makeID;
+
 public class MyCharacter extends CustomPlayer {
     //Stats
     public static final int ENERGY_PER_TURN = 3;
