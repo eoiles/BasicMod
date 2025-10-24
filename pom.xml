@@ -2,8 +2,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <properties>
-        <modID>basicmod</modID>
-        <author>Me! (Or well, you. If you want to use \"quotes\" make sure you have slashes in front of them like this.)</author>
+        <modID>GameMaster</modID>
+        <author>Alice (Or well, you. If you want to use \"quotes\" make sure you have slashes in front of them like this.)</author>
 
         <!-- Change the path for your system to match your Steam installation. -->
         <!-- If you're not sure, go to Slay the Spire in the Steam library, and choose Manage -> Browse local files -->
@@ -23,8 +23,8 @@
     </properties>
 
     <!-- This information will be displayed in ModTheSpire, the modded launcher. -->
-    <name>Basic Mod</name>
-    <version>0.0.0</version>
+    <name>Game Master</name>
+    <version>1.2.3</version>
     <!-- Avoid using \ in this description, as they can cause the description to fail to load. -->
     <!-- If you really want to use them, you'll need to "escape" them by putting another one in front, like \\ -->
     <description>This is a description!\n"This" is a second line of description.
