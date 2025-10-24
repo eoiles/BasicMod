@@ -5,6 +5,9 @@ import basemod.interfaces.AddAudioSubscriber;
 import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
+import basemod.interfaces.EditCharactersSubscriber;          // ← added
+import GameMaster.character.MyCharacter;                    // ← added
+
 import GameMaster.util.GeneralUtils;
 import GameMaster.util.KeywordInfo;
 import GameMaster.util.Sounds;
@@ -36,7 +39,8 @@ public class BasicMod implements
         EditStringsSubscriber,
         EditKeywordsSubscriber,
         AddAudioSubscriber,
-        PostInitializeSubscriber {
+        PostInitializeSubscriber,
+        EditCharactersSubscriber {                 // ← added
     public static ModInfo info;
     public static String modID; //Edit your pom.xml to change this
     static { loadModInfo(); }
@@ -52,6 +56,8 @@ public class BasicMod implements
     //This will be called by ModTheSpire because of the @SpireInitializer annotation at the top of the class.
     public static void initialize() {
         new BasicMod();
+        // Register the card color/art so cards render correctly.
+        MyCharacter.Meta.registerColor();          // ← added
     }
 
     public BasicMod() {
@@ -69,6 +75,12 @@ public class BasicMod implements
         //If you want to set up a config panel, that will be done here.
         //You can find information about this on the BaseMod wiki page "Mod Config and Panel".
         BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, null);
+    }
+
+    /*---------- NEW: Character registration ----------*/
+    @Override
+    public void receiveEditCharacters() {          // ← added
+        MyCharacter.Meta.registerCharacter();      // ← added
     }
 
     /*----------Localization----------*/

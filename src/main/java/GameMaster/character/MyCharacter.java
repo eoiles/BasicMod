@@ -83,7 +83,6 @@ public class MyCharacter extends CustomPlayer {
         }
     }
 
-
     //In-game images
     private static final String SHOULDER_1 = characterPath("shoulder.png"); //Shoulder 1 and 2 are used at rest sites.
     private static final String SHOULDER_2 = characterPath("shoulder2.png");
@@ -113,9 +112,7 @@ public class MyCharacter extends CustomPlayer {
             360.0F
     };
 
-
     //Actual character class code below this point
-
     public MyCharacter() {
         super(getNames()[0], Meta.YOUR_CHARACTER,
                 new CustomEnergyOrb(orbTextures, characterPath("energyorb/vfx.png"), layerSpeeds), //Energy Orb
@@ -144,7 +141,6 @@ public class MyCharacter extends CustomPlayer {
         retVal.add(Defend_Blue.ID);
         retVal.add(Defend_Blue.ID);
         retVal.add(Neutralize.ID);
-
         return retVal;
     }
 
@@ -153,7 +149,6 @@ public class MyCharacter extends CustomPlayer {
         ArrayList<String> retVal = new ArrayList<>();
         //IDs of starting relics. You can have multiple, but one is recommended.
         retVal.add(BurningBlood.ID);
-
         return retVal;
     }
 
@@ -188,12 +183,10 @@ public class MyCharacter extends CustomPlayer {
     public Color getCardRenderColor() {
         return cardRenderColor;
     }
-
     @Override
     public Color getCardTrailColor() {
         return cardTrailColor;
     }
-
     @Override
     public Color getSlashAttackColor() {
         return slashAttackColor;
