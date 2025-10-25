@@ -5,7 +5,7 @@
       "the Name (but 'the' is lowercase, this is displayed at the top left during gameplay)"
     ],
     "TEXT": [
-      "Line #1 “Every line of code is a law.  NL Every law can be rewritten.”",
+      "LOADING ENTITY: GAME_MASTER \n      NL ERROR: Entity exceeds memory allocation\n      NL ERROR: Undefined behavior detected\n      NL WARNING: Segmentation fault imminent\n      NL CONTINUE ANYWAY? [Y/N]\n      NL Y\n      NL ş̴̰̂ų̴͝c̷̱̽c̶̰̈e̷̗͘s̶̰̈́s̴͎̚f̷̧̒ư̶̰l̷̰̎l̸̰̅y̷̰̎ ̸̰̄l̷̰̀o̶̰͝a̷̰͘d̶̰̄ḛ̷͝d̶̰̈",
       " NL Text displayed when smacking the heart. The next one is used for the Vampires event. Usually you just change the last bit.",
       "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us~ ~basic~ ~one,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~"
     ]
