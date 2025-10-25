@@ -148,7 +148,7 @@ public class MyCharacter extends CustomPlayer {
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
         //IDs of starting relics. You can have multiple, but one is recommended.
-        retVal.add(BurningBlood.ID);
+        //retVal.add(BurningBlood.ID);
         return retVal;
     }
 
