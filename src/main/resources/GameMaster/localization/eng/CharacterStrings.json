@@ -1,7 +1,7 @@
 {
-  "${modID}:CharacterID": {
+  "${modID}:GameMaster": {
     "NAMES": [
-      "The Name (Displayed in character select)",
+      "Game Master",
       "the Name (but 'the' is lowercase, this is displayed at the top left during gameplay)"
     ],
     "TEXT": [
