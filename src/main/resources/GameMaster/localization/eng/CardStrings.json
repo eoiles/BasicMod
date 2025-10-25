@@ -8,5 +8,9 @@
       "If you need to use it for stuff.",
       "Blizzard is a good example for this."
     ]
+  },
+  "${modID}:NineNineNine": {
+    "NAME": "Nine Nine Nine",
+    "DESCRIPTION": "Deal !D! damage."
   }
 }

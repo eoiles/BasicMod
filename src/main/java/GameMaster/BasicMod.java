@@ -1,12 +1,16 @@
 package GameMaster;
 
 import basemod.BaseMod;
+import basemod.AutoAdd;                               // ← added
 import basemod.interfaces.AddAudioSubscriber;
 import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
-import basemod.interfaces.EditCharactersSubscriber;          // ← added
-import GameMaster.character.MyCharacter;                    // ← added
+import basemod.interfaces.EditCharactersSubscriber;   // ← already added
+import basemod.interfaces.EditCardsSubscriber;        // ← added
+
+import GameMaster.character.MyCharacter;              // ← already added
+import GameMaster.cards.BaseCard;                     // ← added (package anchor for AutoAdd)
 
 import GameMaster.util.GeneralUtils;
 import GameMaster.util.KeywordInfo;
@@ -40,7 +44,8 @@ public class BasicMod implements
         EditKeywordsSubscriber,
         AddAudioSubscriber,
         PostInitializeSubscriber,
-        EditCharactersSubscriber {                 // ← added
+        EditCharactersSubscriber,                     // ← already added
+        EditCardsSubscriber {                          // ← added
     public static ModInfo info;
     public static String modID; //Edit your pom.xml to change this
     static { loadModInfo(); }
@@ -53,11 +58,11 @@ public class BasicMod implements
         return modID + ":" + id;
     }
 
-    //This will be called by ModTheSpire because of the @SpireInitializer annotation at the top of the class.
+    //Called by ModTheSpire because of @SpireInitializer
     public static void initialize() {
         new BasicMod();
         // Register the card color/art so cards render correctly.
-        MyCharacter.Meta.registerColor();          // ← added
+        MyCharacter.Meta.registerColor();              // ← keep
     }
 
     public BasicMod() {
@@ -69,25 +74,30 @@ public class BasicMod implements
     public void receivePostInitialize() {
         //This loads the image used as an icon in the in-game mods menu.
         Texture badgeTexture = TextureLoader.getTexture(imagePath("badge.png"));
-        //Set up the mod information displayed in the in-game mods menu.
-        //The information used is taken from your pom.xml file.
-
-        //If you want to set up a config panel, that will be done here.
-        //You can find information about this on the BaseMod wiki page "Mod Config and Panel".
+        //The info used is taken from pom.xml
         BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, null);
     }
 
-    /*---------- NEW: Character registration ----------*/
+    /* ---------- Character registration ---------- */
     @Override
-    public void receiveEditCharacters() {          // ← added
-        MyCharacter.Meta.registerCharacter();      // ← added
+    public void receiveEditCharacters() {              // ← keep
+        MyCharacter.Meta.registerCharacter();          // ← keep
     }
 
-    /*----------Localization----------*/
+    /* ---------- Cards: AutoAdd setup ---------- */
+    @Override
+    public void receiveEditCards() {                   // ← added
+        // Auto-register all cards in the same package (and subpackages) as BaseCard
+        new AutoAdd(modID)
+                .packageFilter(BaseCard.class)
+                .setDefaultSeen(true)
+                .cards();
+    }
+
+    /*---------- Localization ----------*/
 
     //This is used to load the appropriate localization files based on language.
-    private static String getLangString()
-    {
+    private static String getLangString() {
         return Settings.language.name().toLowerCase();
     }
     private static final String defaultLanguage = "eng";
@@ -114,8 +124,7 @@ public class BasicMod implements
     }
 
     private void loadLocalization(String lang) {
-        //While this does load every type of localization, most of these files are just outlines so that you can see how they're formatted.
-        //Feel free to comment out/delete any that you don't end up using.
+        //Load whatever localization files you use
         BaseMod.loadCustomStringsFile(CardStrings.class,
                 localizationPath(lang, "CardStrings.json"));
         BaseMod.loadCustomStringsFile(CharacterStrings.class,
@@ -135,8 +144,7 @@ public class BasicMod implements
     }
 
     @Override
-    public void receiveEditKeywords()
-    {
+    public void receiveEditKeywords() {
         Gson gson = new Gson();
         String json = Gdx.files.internal(localizationPath(defaultLanguage, "Keywords.json")).readString(String.valueOf(StandardCharsets.UTF_8));
         KeywordInfo[] keywords = gson.fromJson(json, KeywordInfo[].class);
@@ -146,8 +154,7 @@ public class BasicMod implements
         }
 
         if (!defaultLanguage.equals(getLangString())) {
-            try
-            {
+            try {
                 json = Gdx.files.internal(localizationPath(getLangString(), "Keywords.json")).readString(String.valueOf(StandardCharsets.UTF_8));
                 keywords = gson.fromJson(json, KeywordInfo[].class);
                 for (KeywordInfo keyword : keywords) {
@@ -155,8 +162,7 @@ public class BasicMod implements
                     registerKeyword(keyword);
                 }
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 logger.warn(modID + " does not support " + getLangString() + " keywords.");
             }
         }
@@ -164,8 +170,7 @@ public class BasicMod implements
 
     private void registerKeyword(KeywordInfo info) {
         BaseMod.addKeyword(modID.toLowerCase(), info.PROPER_NAME, info.NAMES, info.DESCRIPTION, info.COLOR);
-        if (!info.ID.isEmpty())
-        {
+        if (!info.ID.isEmpty()) {
             keywords.put(info.ID, info);
         }
     }
@@ -175,7 +180,7 @@ public class BasicMod implements
         loadAudio(Sounds.class);
     }
 
-    private static final String[] AUDIO_EXTENSIONS = { ".ogg", ".wav", ".mp3" }; //There are more valid types, but not really worth checking them all here
+    private static final String[] AUDIO_EXTENSIONS = { ".ogg", ".wav", ".mp3" }; //There are more valid types, but this is enough
     private void loadAudio(Class<?> cls) {
         try {
             Field[] fields = cls.getDeclaredFields();
@@ -196,20 +201,17 @@ public class BasicMod implements
                                 continue outer;
                             }
                         }
-                        throw new Exception("Failed to find an audio file \"" + f.getName() + "\" in " + resourcesFolder + "/audio; check to ensure the capitalization and filename are correct.");
-                    }
-                    else { //Otherwise, load defined path
+                        throw new Exception("Failed to find an audio file \"" + f.getName() + "\" in " + resourcesFolder + "/audio.");
+                    } else { //Otherwise, load defined path
                         if (Gdx.files.internal(s).exists()) {
                             BaseMod.addAudio(s, s);
-                        }
-                        else {
-                            throw new Exception("Failed to find audio file \"" + s + "\"; check to ensure this is the correct filepath.");
+                        } else {
+                            throw new Exception("Failed to find audio file \"" + s + "\"; check the filepath.");
                         }
                     }
                 }
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             logger.error("Exception occurred in loadAudio: ", e);
         }
     }
@@ -247,25 +249,20 @@ public class BasicMod implements
         FileHandle resources = new LwjglFileHandle(name, Files.FileType.Internal);
 
         if (!resources.exists()) {
-            throw new RuntimeException("\n\tFailed to find resources folder; expected it to be at  \"resources/" + name + "\"." +
-                    " Either make sure the folder under resources has the same name as your mod's package, or change the line\n" +
-                    "\t\"private static final String resourcesFolder = checkResourcesPath();\"\n" +
-                    "\tat the top of the " + BasicMod.class.getSimpleName() + " java file.");
+            throw new RuntimeException("\n\tFailed to find resources folder; expected it to be at  \"resources/" + name + "\".");
         }
         if (!resources.child("images").exists()) {
-            throw new RuntimeException("\n\tFailed to find the 'images' folder in the mod's 'resources/" + name + "' folder; Make sure the " +
-                    "images folder is in the correct location.");
+            throw new RuntimeException("\n\tFailed to find the 'images' folder in the mod's 'resources/" + name + "' folder.");
         }
         if (!resources.child("localization").exists()) {
-            throw new RuntimeException("\n\tFailed to find the 'localization' folder in the mod's 'resources/" + name + "' folder; Make sure the " +
-                    "localization folder is in the correct location.");
+            throw new RuntimeException("\n\tFailed to find the 'localization' folder in the mod's 'resources/" + name + "' folder.");
         }
 
         return name;
     }
 
     /**
-     * This determines the mod's ID based on information stored by ModTheSpire.
+     * Determines the mod's ID based on information stored by ModTheSpire.
      */
     private static void loadModInfo() {
         Optional<ModInfo> infos = Arrays.stream(Loader.MODINFOS).filter((modInfo)->{
