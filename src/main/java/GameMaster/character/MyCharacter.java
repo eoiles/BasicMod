@@ -4,6 +4,7 @@ import basemod.BaseMod;
 import basemod.abstracts.CustomEnergyOrb;
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpriterAnimation;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
@@ -147,7 +148,10 @@ public class MyCharacter extends CustomPlayer {
         retVal.add(makeID("Defend"));
         retVal.add(makeID("Defend"));
 
-        retVal.add(GameMaster.cards.NineNineNine.ID); //Adding our custom card to the starting deck
+        // character-specific cards
+        retVal.add(GameMaster.cards.DamageIncrease.ID);
+        retVal.add(GameMaster.cards.BlockIncrease.ID);
+        retVal.add(GameMaster.cards.EnergyDecrease.ID);
         return retVal;
     }
 

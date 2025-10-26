@@ -22,7 +22,7 @@ public class Strike extends BaseCard {
             1   // cost
     );
 
-    private static final int DAMAGE = 1;
+    private static final int DAMAGE = 6;
     private static final int UPG_DAMAGE = 0; // no upgrade change
 
     public Strike() {

@@ -20,7 +20,7 @@ public class Defend extends BaseCard {
             1   // cost
     );
 
-    private static final int BLOCK = 1;
+    private static final int BLOCK = 5;
     private static final int UPG_BLOCK = 0; // no upgrade change
 
     public Defend() {

@@ -20,5 +20,37 @@
   "${modID}:Defend": {
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block."
+  },
+  "${modID}:DamageMagnify": {
+    "NAME": "Damage Magnify",
+    "DESCRIPTION": "Choose a card in your hand. Multiply its damage by !M! this combat. Exhaust."
+  },
+  "${modID}:EnergyReduce": {
+    "NAME": "Energy Diminish",
+    "DESCRIPTION": "Choose a card in your hand. Halve its cost for this combat (round to even). NL Exhaust."
+  },
+  "${modID}:DamageIncrease": {
+    "NAME": "Damage Increase",
+    "DESCRIPTION": "Choose a card in your hand with damage. It gains !M! damage for this combat."
+  },
+  "${modID}:BlockIncrease": {
+    "NAME": "Block Increase",
+    "DESCRIPTION": "Choose a card in your hand with Block. It gains !M! Block for this combat."
+  },
+  "${modID}:EnergyDecrease": {
+    "NAME": "Energy Decrease",
+    "DESCRIPTION": "Choose a card in your hand. Reduce its cost by 1 for this combat."
+  },
+  "${modID}:BlockMagnify": {
+    "NAME": "Block Magnify",
+    "DESCRIPTION": "Choose a card in your hand. It gains !M!x Block for this combat. NL Exhaust."
+  },
+  "${modID}:HPShrink": {
+    "NAME": "HP Shrink",
+    "DESCRIPTION": "Set an enemy's HP to 10% of its current HP (round to even). NL Exhaust."
+  },
+  "${modID}:Execute": {
+    "NAME": "Execute",
+    "DESCRIPTION": "If the target has 10% HP or less, kill it."
   }
 }

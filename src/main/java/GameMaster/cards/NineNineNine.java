@@ -18,9 +18,9 @@ public class NineNineNine extends BaseCard {
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
             CardType.ATTACK,
-            CardRarity.SPECIAL,       // SPECIAL so it won’t clog reward pools (spawn with console)
+            CardRarity.RARE,       // SPECIAL so it won’t clog reward pools (spawn with console)
             CardTarget.ENEMY,
-            1                          // cost
+            999                          // cost
     );
 
     private static final int DAMAGE = 999;
