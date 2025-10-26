@@ -153,6 +153,10 @@ public class MyCharacter extends CustomPlayer {
         retVal.add(GameMaster.cards.DamageIncrease.ID);
         retVal.add(GameMaster.cards.BlockIncrease.ID);
         retVal.add(GameMaster.cards.EnergyDecrease.ID);
+
+
+//        retVal.add(makeID("Strike_Red"));
+//        retVal.add(makeID("Defend_Red"));
         return retVal;
     }
 

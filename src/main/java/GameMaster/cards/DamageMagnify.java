@@ -30,17 +30,14 @@ public class DamageMagnify extends BaseCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new SelectCardsInHandAction(
                 1,
-                "Choose a card to magnify its damage.",
-                (cards) -> {
+                "Choose a card with damage.",
+                // Only allow cards that actually have baseDamage defined (>= 0)
+                c -> c.baseDamage >= 0,
+                cards -> {
                     for (AbstractCard c : cards) {
-                        // Only touch cards that actually deal damage
-                        if (c.baseDamage > 0) {
-                            c.baseDamage *= magicNumber;
-                            c.applyPowers();
-                            c.flash();
-                        } else {
-                            c.flash(); // no-op for non-damage cards
-                        }
+                        c.baseDamage += magicNumber;
+                        c.applyPowers();
+                        c.flash();
                     }
                 }
         ));

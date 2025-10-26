@@ -30,8 +30,11 @@ public class BlockMagnify extends BaseCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new SelectCardsInHandAction(
                 1,
-                "Choose a card to magnify its Block.",
+                "Choose a Defend to magnify its Block.",
+                // only allow the basic Defend (uses the STARTER_DEFEND tag)
+                c -> c.hasTag(AbstractCard.CardTags.STARTER_DEFEND),
                 cards -> {
+                    if (cards.isEmpty()) return;
                     for (AbstractCard c : cards) {
                         c.baseBlock *= magicNumber;
                         c.isBlockModified = true;
