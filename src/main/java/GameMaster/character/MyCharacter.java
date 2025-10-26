@@ -1,5 +1,6 @@
 package GameMaster.character;
 
+import GameMaster.relics.BloodGold;
 import basemod.BaseMod;
 import basemod.abstracts.CustomEnergyOrb;
 import basemod.abstracts.CustomPlayer;
@@ -159,7 +160,9 @@ public class MyCharacter extends CustomPlayer {
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
         //IDs of starting relics. You can have multiple, but one is recommended.
-        //retVal.add(BurningBlood.ID);
+
+        retVal.add(BloodGold.ID);
+
         return retVal;
     }
 
