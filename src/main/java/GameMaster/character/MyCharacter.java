@@ -136,11 +136,18 @@ public class MyCharacter extends CustomPlayer {
         ArrayList<String> retVal = new ArrayList<>();
         //List of IDs of cards for your starting deck.
         //If you want multiple of the same card, you have to add it multiple times.
-        retVal.add(Strike_Red.ID);
-        retVal.add(Strike_Red.ID);
-        retVal.add(Defend_Blue.ID);
-        retVal.add(Defend_Blue.ID);
-        retVal.add(Neutralize.ID);
+        // 4 Strikes
+        retVal.add(makeID("Strike"));
+        retVal.add(makeID("Strike"));
+        retVal.add(makeID("Strike"));
+        retVal.add(makeID("Strike"));
+        // 4 Defends
+        retVal.add(makeID("Defend"));
+        retVal.add(makeID("Defend"));
+        retVal.add(makeID("Defend"));
+        retVal.add(makeID("Defend"));
+
+        retVal.add(GameMaster.cards.NineNineNine.ID); //Adding our custom card to the starting deck
         return retVal;
     }
 

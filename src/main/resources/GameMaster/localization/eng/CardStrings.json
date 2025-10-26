@@ -12,5 +12,13 @@
   "${modID}:NineNineNine": {
     "NAME": "Nine Nine Nine",
     "DESCRIPTION": "Deal !D! damage."
+  },
+  "${modID}:Strike": {
+    "NAME": "Strike",
+    "DESCRIPTION": "Deal !D! damage."
+  },
+  "${modID}:Defend": {
+    "NAME": "Defend",
+    "DESCRIPTION": "Gain !B! Block."
   }
 }
