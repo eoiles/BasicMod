@@ -4,5 +4,12 @@
     "DESCRIPTIONS": [
       "You are Very Cool and Strong."
     ]
+  },
+
+  "${modID}:TaiChi": {
+    "NAME": "Tai Chi",
+    "DESCRIPTIONS": [
+      "Whenever you play an #yAttack, gain #b%d #yBlock. Whenever you play a non-attack card, deal #b%d damage to a random enemy."
+    ]
   }
 }

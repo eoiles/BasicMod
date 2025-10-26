@@ -25,7 +25,7 @@
     "NAME": "Damage Magnify",
     "DESCRIPTION": "Choose a card in your hand. Multiply its damage by !M! this combat. Exhaust."
   },
-  "${modID}:EnergyReduce": {
+  "${modID}:EnergyDiminish": {
     "NAME": "Energy Diminish",
     "DESCRIPTION": "Choose a card in your hand. Halve its cost for this combat (round to even). NL Exhaust."
   },
@@ -52,5 +52,21 @@
   "${modID}:Execute": {
     "NAME": "Execute",
     "DESCRIPTION": "If the target has 10% HP or less, kill it."
+  },
+  "${modID}:TaiChi": {
+    "NAME": "Tai Chi",
+    "DESCRIPTION": "Whenever you play an #yAttack, gain !M! #yBlock. Whenever you play a non-attack card, deal !M! damage to a random enemy."
+  },
+  "${modID}:Purify": {
+    "NAME": "Purify",
+    "DESCRIPTION": "Remove all buffs from an enemy. NL Exhaust."
+  },
+  "${modID}:FreeStrike": {
+    "NAME": "Free Strike",
+    "DESCRIPTION": "Deal !D! damage. NL Draw !M! card."
+  },
+  "${modID}:HeavyStrike": {
+    "NAME": "Heavy Strike",
+    "DESCRIPTION": "Deal !D! damage."
   }
 }
