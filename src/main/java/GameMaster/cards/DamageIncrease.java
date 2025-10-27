@@ -23,7 +23,7 @@ public class DamageIncrease extends BaseCard {
     public DamageIncrease() {
         super(ID, info);
 
-        setMagic(3); // !M! shows 1 in the description
+        setMagic(3,3); // !M! shows 1 in the description
     }
 
     @Override

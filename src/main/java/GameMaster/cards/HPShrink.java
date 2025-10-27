@@ -15,12 +15,17 @@ public class HPShrink extends BaseCard {
             CardType.SKILL,
             CardRarity.RARE,
             CardTarget.ENEMY,
-            2 // cost (change if you want)
+            2 // cost
     );
+
+    private static final int PERCENT = 75;     // base: set to 75% of current HP
+    private static final int UPGRADE_TO = 50;  // upgrade: set to 50%
 
     public HPShrink() {
         super(ID, info);
         setExhaust(true);
+        // Use magicNumber as the target percent of current HP.
+        setMagic(PERCENT, 0); // we'll override upgrade() to set to 50%
     }
 
     @Override
@@ -28,13 +33,24 @@ public class HPShrink extends BaseCard {
         if (m == null || m.isDeadOrEscaped()) return;
 
         int current = m.currentHealth;
-        int target = (int) Math.rint(current * 0.1); // round-to-even
+        int target = (int) Math.rint(current * (magicNumber / 100.0)); // banker’s rounding
         if (target < 0) target = 0;
+        if (target > current) target = current; // safety guard
 
         int lose = current - target;
         if (lose > 0) {
-            // HP loss ignores Block. (Note: Intangible will still reduce damage to 1.)
+            // HP loss ignores Block (Intangible will still cap it to 1).
             addToBot(new LoseHPAction(m, p, lose));
+        }
+    }
+
+    @Override
+    public void upgrade() {
+        if (!upgraded) {
+            upgradeName();
+            // Reduce the percent from 75 -> 50 on upgrade.
+            int delta = UPGRADE_TO - baseMagicNumber; // 50 - 75 = -25
+            upgradeMagicNumber(delta);
         }
     }
 

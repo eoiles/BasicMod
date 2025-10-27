@@ -22,7 +22,7 @@ public class EnergyDecrease extends BaseCard {
 
     public EnergyDecrease() {
         super(ID, info);
-        setMagic(1); // <-- ensures !M! shows 1
+        setMagic(1,1); // <-- ensures !M! shows 1
     }
 
     @Override

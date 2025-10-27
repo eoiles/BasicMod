@@ -15,7 +15,7 @@ public class EnergyDiminish extends BaseCard {
             CardType.SKILL,
             CardRarity.UNCOMMON,
             CardTarget.SELF,
-            1 // this card's cost
+            1 // base cost (upgrades to 0)
     );
 
     public EnergyDiminish() {
@@ -38,8 +38,7 @@ public class EnergyDiminish extends BaseCard {
                         int target = (int) Math.rint(current / 2.0);
                         if (target < 0) target = 0;
 
-                        // Persist for the rest of the combat using the built-in helper.
-                        // modifyCostForCombat takes a delta, so compute the difference.
+                        // Persist for the rest of the combat (delta-based)
                         int delta = target - current;
                         if (delta != 0) {
                             c.modifyCostForCombat(delta);
@@ -49,6 +48,14 @@ public class EnergyDiminish extends BaseCard {
                     }
                 }
         ));
+    }
+
+    @Override
+    public void upgrade() {
+        if (!upgraded) {
+            upgradeName();
+            upgradeBaseCost(0);
+        }
     }
 
     @Override

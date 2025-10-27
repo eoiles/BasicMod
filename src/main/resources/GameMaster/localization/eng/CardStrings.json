@@ -39,7 +39,7 @@
   },
   "${modID}:EnergyDecrease": {
     "NAME": "Energy Decrease",
-    "DESCRIPTION": "Choose a card in your hand. Reduce its cost by 1 for this combat."
+    "DESCRIPTION": "Choose a card in your hand. Reduce its cost by !M! for this combat."
   },
   "${modID}:BlockMagnify": {
     "NAME": "Block Magnify",
@@ -47,7 +47,7 @@
   },
   "${modID}:HPShrink": {
     "NAME": "HP Shrink",
-    "DESCRIPTION": "Set an enemy's HP to 10% of its current HP (round to even). NL Exhaust."
+    "DESCRIPTION": "Set an enemy's HP to 50% of its current HP (round to even). NL Exhaust."
   },
   "${modID}:Execute": {
     "NAME": "Execute",
@@ -68,5 +68,34 @@
   "${modID}:HeavyStrike": {
     "NAME": "Heavy Strike",
     "DESCRIPTION": "Deal !D! damage."
+  },
+  "${modID}:Cleave": {
+    "NAME": "Cleave",
+    "DESCRIPTION": "Deal !D! damage to an enemy. Deal 50% of that damage to all other enemies."
+  },
+  "${modID}:Splash": {
+    "NAME": "Splash",
+    "DESCRIPTION": "Gain Splash."
+  },
+  "${modID}:Negate": {
+    "NAME": "Negate",
+    "DESCRIPTION": "Negate the target enemy's intent. NL Exhaust."
+  },
+
+  "${modID}:Ramp": {
+    "NAME": "Ramp",
+    "DESCRIPTION": "Increase your maximum [E] by !M! this combat. NL Exhaust."
+  },
+
+  "${modID}:WildCard": {
+    "NAME": "WildCard",
+    "DESCRIPTION": "Choose a card from your deck. This becomes a copy of it for the rest of this combat."
   }
+,
+  "${modID}:PotOfGreed": {
+    "NAME": "Pot of Greed",
+    "DESCRIPTION": "Draw !M! cards. NL Exhaust."
+  }
+
+
 }

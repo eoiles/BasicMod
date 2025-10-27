@@ -21,7 +21,7 @@ public class Defend extends BaseCard {
     );
 
     private static final int BLOCK = 5;
-    private static final int UPG_BLOCK = 0; // no upgrade change
+    private static final int UPG_BLOCK = 3; // no upgrade change
 
     public Defend() {
         super(ID, info);

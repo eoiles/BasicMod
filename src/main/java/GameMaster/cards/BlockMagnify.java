@@ -18,11 +18,11 @@ public class BlockMagnify extends BaseCard {
             1 // cost
     );
 
-    private static final int MULTIPLIER = 10;
+    private static final int MULTIPLIER = 2;
 
     public BlockMagnify() {
         super(ID, info);
-        setMagic(MULTIPLIER, 0);
+        setMagic(MULTIPLIER, 1);
         setExhaust(true);
     }
 

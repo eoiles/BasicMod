@@ -18,22 +18,24 @@ public class Execute extends BaseCard {
             1 // cost
     );
 
+    private static final int PERCENT = 10;
+    private static final int UPG_PERCENT_DELTA = 10; // 10% -> 20% on upgrade
+
     public Execute() {
         super(ID, info);
-        setDamage(0, 0);        // no normal damage; pure execute check
-        setCostUpgrade(0);      // upgrade -> 0 cost (optional, easy knob)
+        setDamage(0, 0);              // pure execute; no normal damage
+        setMagic(PERCENT, UPG_PERCENT_DELTA);
+        setCostUpgrade(0);            // still upgrades to 0 cost
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (m == null || m.isDeadOrEscaped()) return;
 
-        // Kill if target has 10% HP or less (threshold uses ceil so exactly 10% qualifies)
-        int threshold = (int) Math.ceil(m.maxHealth * 0.10f);
+        int threshold = (int)Math.ceil(m.maxHealth * (magicNumber / 100.0f));
         if (m.currentHealth <= threshold) {
             addToBot(new InstantKillAction(m));
         }
-        // Otherwise, no effect (per your spec). If you want chip damage, set a base damage and add a DamageAction here.
     }
 
     @Override

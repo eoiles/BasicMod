@@ -20,8 +20,8 @@ public class HeavyStrike extends BaseCard {
             2 // cost
     );
 
-    private static final int DAMAGE = 12;
-    private static final int UPG_DAMAGE = 4; // tweak if you want
+    private static final int DAMAGE = 18;
+    private static final int UPG_DAMAGE = 6; // tweak if you want
 
     public HeavyStrike() {
         super(ID, info);

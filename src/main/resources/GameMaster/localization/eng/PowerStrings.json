@@ -11,5 +11,18 @@
     "DESCRIPTIONS": [
       "Whenever you play an #yAttack, gain #b%d #yBlock. Whenever you play a non-attack card, deal #b%d damage to a random enemy."
     ]
+  },
+  "${modID}:Splash": {
+    "NAME": "Splash",
+    "DESCRIPTIONS": [
+      "Whenever you deal #yAttack damage, deal #b%d%% of that damage to all other enemies."
+    ]
+  },
+  "${modID}:Ramp": {
+    "NAME": "Ramp",
+    "DESCRIPTIONS": [
+      "Increase your maximum [E] by !M! this combat. NL Exhaust."
+    ]
   }
+
 }

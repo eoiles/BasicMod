@@ -23,7 +23,7 @@ public class Strike extends BaseCard {
     );
 
     private static final int DAMAGE = 6;
-    private static final int UPG_DAMAGE = 0; // no upgrade change
+    private static final int UPG_DAMAGE = 3; // no upgrade change
 
     public Strike() {
         super(ID, info);

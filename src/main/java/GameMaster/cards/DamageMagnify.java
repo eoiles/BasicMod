@@ -18,11 +18,11 @@ public class DamageMagnify extends BaseCard {
             1 // cost
     );
 
-    private static final int MULTIPLIER = 10;
+    private static final int MULTIPLIER = 2;
 
     public DamageMagnify() {
         super(ID, info);
-        setMagic(MULTIPLIER, 0);   // how much to multiply damage by
+        setMagic(MULTIPLIER, 1);   // how much to multiply damage by
         setExhaust(true);          // one-and-done
     }
 
@@ -35,7 +35,7 @@ public class DamageMagnify extends BaseCard {
                 c -> c.baseDamage >= 0,
                 cards -> {
                     for (AbstractCard c : cards) {
-                        c.baseDamage += magicNumber;
+                        c.baseDamage *= magicNumber;
                         c.applyPowers();
                         c.flash();
                     }

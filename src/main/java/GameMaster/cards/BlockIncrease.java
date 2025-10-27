@@ -23,7 +23,7 @@ public class BlockIncrease extends BaseCard {
     public BlockIncrease() {
         super(ID, info);
 
-        setMagic(2);
+        setMagic(3,3);
     }
 
     @Override

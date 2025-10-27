@@ -24,7 +24,7 @@ public class NineNineNine extends BaseCard {
     );
 
     private static final int DAMAGE = 999;
-    private static final int UPG_DAMAGE = 0;         // no upgrade change
+    private static final int UPG_DAMAGE =9000;         // no upgrade change
 
     public NineNineNine() {
         super(ID, info);
