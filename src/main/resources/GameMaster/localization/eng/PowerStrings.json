@@ -18,11 +18,26 @@
       "Whenever you deal #yAttack damage, deal #b%d%% of that damage to all other enemies."
     ]
   },
+
   "${modID}:Ramp": {
     "NAME": "Ramp",
     "DESCRIPTIONS": [
-      "Increase your maximum [E] by !M! this combat. NL Exhaust."
+      "At the start of your turn, gain #b%d [E]."
+    ]
+  },
+  "${modID}:LossAndOverflow": {
+    "NAME": "Loss and Overflow",
+    "DESCRIPTIONS": [
+      "At the start of your turn, after you draw, gain Strength equal to #b%1$d minus the total cost of cards in your hand (X is capped at #b%1$d)."
+    ]
+  },
+  "${modID}:ChaosOrb": {
+    "NAME": "Chaos Orb",
+    "DESCRIPTIONS": [
+      "Whenever you play an Attack, apply a random debuff to the target enemy.",
+      "Whenever you play an Attack, apply #b%d random debuffs to the target enemy."
     ]
   }
+
 
 }

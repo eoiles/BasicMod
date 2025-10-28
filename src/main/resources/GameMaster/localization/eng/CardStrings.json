@@ -47,15 +47,15 @@
   },
   "${modID}:HPShrink": {
     "NAME": "HP Shrink",
-    "DESCRIPTION": "Set an enemy's HP to 50% of its current HP (round to even). NL Exhaust."
+    "DESCRIPTION": "Set an enemy's HP to !M! of its current HP (round to even). NL Exhaust."
   },
   "${modID}:Execute": {
     "NAME": "Execute",
-    "DESCRIPTION": "If the target has 10% HP or less, kill it."
+    "DESCRIPTION": "If the target has !M! %HP or less, kill it."
   },
   "${modID}:TaiChi": {
     "NAME": "Tai Chi",
-    "DESCRIPTION": "Whenever you play an #yAttack, gain !M! #yBlock. Whenever you play a non-attack card, deal !M! damage to a random enemy."
+    "DESCRIPTION": "Whenever you play an Attack, gain !M! Block. Whenever you play a non-attack card, deal !M! damage to a random enemy."
   },
   "${modID}:Purify": {
     "NAME": "Purify",
@@ -75,16 +75,11 @@
   },
   "${modID}:Splash": {
     "NAME": "Splash",
-    "DESCRIPTION": "Gain Splash."
+    "DESCRIPTION": "Gain Splash.Whenever you deal Attack damage, deal #b%d%% of that damage to all other enemies."
   },
   "${modID}:Negate": {
     "NAME": "Negate",
     "DESCRIPTION": "Negate the target enemy's intent. NL Exhaust."
-  },
-
-  "${modID}:Ramp": {
-    "NAME": "Ramp",
-    "DESCRIPTION": "Increase your maximum [E] by !M! this combat. NL Exhaust."
   },
 
   "${modID}:WildCard": {
@@ -95,6 +90,28 @@
   "${modID}:PotOfGreed": {
     "NAME": "Pot of Greed",
     "DESCRIPTION": "Draw !M! cards. NL Exhaust."
+  },
+
+  "${modID}:Ramp": {
+    "NAME": "Ramp",
+    "DESCRIPTION": "At the start of your turn, gain !M! [E]. NL Exhaust."
+  },
+  "${modID}:Chance": {
+    "NAME": "Chance",
+    "DESCRIPTION": "Discard 1. NL Draw !M!."
+  },
+  "${modID}:LossAndOverflow": {
+    "NAME": "Loss and Overflow",
+    "DESCRIPTION": "At the start of your turn, after you draw, gain Strength equal to !M! minus the total cost of cards in your hand (X is capped at !M!)."
+  },
+  "${modID}:ChaosOrb": {
+    "NAME": "Chaos Orb",
+    "DESCRIPTION": "Whenever you play an Attack, apply !M! random debuff to the target."
+  },
+
+  "${modID}:DronePack": {
+    "NAME": "Drone Pack",
+    "DESCRIPTION": "Channel !M! random #yOrbs."
   }
 
 

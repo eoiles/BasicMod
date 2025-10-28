@@ -4,8 +4,6 @@ import static GameMaster.BasicMod.makeID;
 
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 public class RampPower extends BasePower {
     public static final String POWER_ID = makeID("Ramp");
@@ -18,32 +16,15 @@ public class RampPower extends BasePower {
     }
 
     @Override
-    public void onInitialApplication() {
-        if (owner instanceof AbstractPlayer) {
-            AbstractPlayer p = (AbstractPlayer) owner;
-            p.energy.energyMaster += amount;          // raise max for this combat
-            addToTop(new GainEnergyAction(amount));    // feel it immediately this turn
-        }
+    public void atStartOfTurn() {
+        addToBot(new GainEnergyAction(amount)); // extra energy every turn
+        flash();
     }
 
     @Override
     public void stackPower(int stackAmount) {
-        super.stackPower(stackAmount);
-        if (owner instanceof AbstractPlayer) {
-            AbstractPlayer p = (AbstractPlayer) owner;
-            p.energy.energyMaster += stackAmount;      // raise max further
-            addToTop(new GainEnergyAction(stackAmount));
-        }
+        super.stackPower(stackAmount); // stacks = more energy each turn
         updateDescription();
-    }
-
-    @Override
-    public void onRemove() {
-        // Revert when the power is actually removed (do not also do this in onVictory()).
-        if (owner instanceof AbstractPlayer) {
-            AbstractPlayer p = (AbstractPlayer) owner;
-            p.energy.energyMaster = Math.max(0, p.energy.energyMaster - amount);
-        }
     }
 
     @Override
