@@ -1,5 +1,6 @@
-package GameMaster.cards;
+package GameMaster.cards.General;
 
+import GameMaster.cards.BaseCard;
 import GameMaster.character.MyCharacter;
 import GameMaster.util.CardStats;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
@@ -7,10 +8,8 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import static GameMaster.BasicMod.makeID;
-
-public class EnergyDecrease extends BaseCard {
-    public static final String ID = makeID(EnergyDecrease.class.getSimpleName());
+public class DamageIncrease extends BaseCard {
+    public static final String ID = makeID(DamageIncrease.class.getSimpleName());
 
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
@@ -20,22 +19,23 @@ public class EnergyDecrease extends BaseCard {
             1
     );
 
-    public EnergyDecrease() {
+    public DamageIncrease() {
         super(ID, info);
-        setMagic(1,1); // <-- ensures !M! shows 1
+
+        setMagic(3,3); // !M! shows 1 in the description
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new SelectCardsInHandAction(
                 1,
-                "Choose a card to reduce its cost by " + magicNumber + " for this combat.",
+                "Choose a card with damage.",
+                // Only allow cards that actually have baseDamage defined (>= 0)
+                c -> c.baseDamage >= 0,
                 cards -> {
                     for (AbstractCard c : cards) {
-                        if (c.cost >= 0) {        // ignore X-cost (-1) and unplayable (-2)
-                            c.updateCost(-magicNumber);
-                            c.isCostModified = true;
-                        }
+                        c.baseDamage += magicNumber;
+                        c.applyPowers();
                         c.flash();
                     }
                 }
@@ -43,5 +43,5 @@ public class EnergyDecrease extends BaseCard {
     }
 
     @Override
-    public AbstractCard makeCopy() { return new EnergyDecrease(); }
+    public AbstractCard makeCopy() { return new DamageIncrease(); }
 }

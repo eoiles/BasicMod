@@ -1,4 +1,4 @@
-package GameMaster.cards;
+package GameMaster.cards.General;
 
 import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;

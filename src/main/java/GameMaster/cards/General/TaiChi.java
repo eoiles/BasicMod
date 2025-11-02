@@ -1,15 +1,16 @@
-package GameMaster.cards;
+package GameMaster.cards.General;
 
+import GameMaster.cards.BaseCard;
 import GameMaster.character.MyCharacter;
-import GameMaster.powers.ChaosOrbPower;
+import GameMaster.powers.TaiChiPower;
 import GameMaster.util.CardStats;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class ChaosOrb extends BaseCard {
-    public static final String ID = makeID(ChaosOrb.class.getSimpleName());
+public class TaiChi extends BaseCard {
+    public static final String ID = makeID(TaiChi.class.getSimpleName());
 
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
@@ -19,19 +20,19 @@ public class ChaosOrb extends BaseCard {
             1 // cost
     );
 
-    private static final int DEBUFFS_PER_ATTACK = 1;
-    private static final int UPGRADE_DELT = 1; // 1 -> 2
+    private static final int AMOUNT = 1; // block gained / damage dealt per trigger
 
-    public ChaosOrb() {
+    public TaiChi() {
         super(ID, info);
-        setMagic(DEBUFFS_PER_ATTACK, UPGRADE_DELT);
+        setMagic(AMOUNT, AMOUNT); // upgrade would add +1
+        initializeDescription(); // <-- parse #y, !M!, NL, keywords, etc.
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new ChaosOrbPower(p, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new TaiChiPower(p, magicNumber)));
     }
 
     @Override
-    public AbstractCard makeCopy() { return new ChaosOrb(); }
+    public AbstractCard makeCopy() { return new TaiChi(); }
 }

@@ -1,5 +1,6 @@
-package GameMaster.cards;
+package GameMaster.cards.General;
 
+import GameMaster.cards.BaseCard;
 import GameMaster.character.MyCharacter;
 import GameMaster.util.CardStats;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
@@ -7,10 +8,8 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import static GameMaster.BasicMod.makeID;
-
-public class DamageIncrease extends BaseCard {
-    public static final String ID = makeID(DamageIncrease.class.getSimpleName());
+public class BlockIncrease extends BaseCard {
+    public static final String ID = makeID(BlockIncrease.class.getSimpleName());
 
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
@@ -20,22 +19,22 @@ public class DamageIncrease extends BaseCard {
             1
     );
 
-    public DamageIncrease() {
+    public BlockIncrease() {
         super(ID, info);
 
-        setMagic(3,3); // !M! shows 1 in the description
+        setMagic(3,3);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new SelectCardsInHandAction(
                 1,
-                "Choose a card with damage.",
-                // Only allow cards that actually have baseDamage defined (>= 0)
-                c -> c.baseDamage >= 0,
+                "Choose a card with Block.",
+                // Only cards that actually have baseBlock defined (>= 0)
+                c -> c.baseBlock >= 0,
                 cards -> {
                     for (AbstractCard c : cards) {
-                        c.baseDamage += magicNumber;
+                        c.baseBlock += magicNumber;
                         c.applyPowers();
                         c.flash();
                     }
@@ -44,5 +43,5 @@ public class DamageIncrease extends BaseCard {
     }
 
     @Override
-    public AbstractCard makeCopy() { return new DamageIncrease(); }
+    public AbstractCard makeCopy() { return new BlockIncrease(); }
 }

@@ -1,19 +1,19 @@
 package GameMaster.character;
 
+import GameMaster.cards.General.BlockIncrease;
+import GameMaster.cards.General.DamageIncrease;
+import GameMaster.cards.General.EnergyDecrease;
 import GameMaster.relics.BloodGold;
 import basemod.BaseMod;
 import basemod.abstracts.CustomEnergyOrb;
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpriterAnimation;
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.blue.Defend_Blue;
-import com.megacrit.cardcrawl.cards.green.Neutralize;
 import com.megacrit.cardcrawl.cards.red.Strike_Red;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -22,7 +22,6 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
-import com.megacrit.cardcrawl.relics.BurningBlood;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 
 import java.util.ArrayList;
@@ -150,9 +149,9 @@ public class MyCharacter extends CustomPlayer {
         retVal.add(makeID("Defend"));
 
         // character-specific cards
-        retVal.add(GameMaster.cards.DamageIncrease.ID);
-        retVal.add(GameMaster.cards.BlockIncrease.ID);
-        retVal.add(GameMaster.cards.EnergyDecrease.ID);
+        retVal.add(DamageIncrease.ID);
+        retVal.add(BlockIncrease.ID);
+        retVal.add(EnergyDecrease.ID);
 
 
 //        retVal.add(makeID("Strike_Red"));

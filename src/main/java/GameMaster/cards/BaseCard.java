@@ -1,9 +1,9 @@
 package GameMaster.cards;
 
+import GameMaster.BasicMod;
 import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
 import basemod.abstracts.DynamicVariable;
-import GameMaster.BasicMod;
 import GameMaster.util.CardStats;
 import GameMaster.util.TriFunction;
 import com.badlogic.gdx.graphics.Color;

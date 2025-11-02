@@ -1,5 +1,6 @@
-package GameMaster.cards;
+package GameMaster.cards.General;
 
+import GameMaster.cards.BaseCard;
 import GameMaster.character.MyCharacter;
 import GameMaster.util.CardStats;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
@@ -7,8 +8,8 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class BlockMagnify extends BaseCard {
-    public static final String ID = makeID(BlockMagnify.class.getSimpleName());
+public class DamageMagnify extends BaseCard {
+    public static final String ID = makeID(DamageMagnify.class.getSimpleName());
 
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
@@ -20,24 +21,22 @@ public class BlockMagnify extends BaseCard {
 
     private static final int MULTIPLIER = 2;
 
-    public BlockMagnify() {
+    public DamageMagnify() {
         super(ID, info);
-        setMagic(MULTIPLIER, 1);
-        setExhaust(true);
+        setMagic(MULTIPLIER, 1);   // how much to multiply damage by
+        setExhaust(true);          // one-and-done
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new SelectCardsInHandAction(
                 1,
-                "Choose a Defend to magnify its Block.",
-                // only allow the basic Defend (uses the STARTER_DEFEND tag)
-                c -> c.hasTag(AbstractCard.CardTags.STARTER_DEFEND),
+                "Choose a card with damage.",
+                // Only allow cards that actually have baseDamage defined (>= 0)
+                c -> c.baseDamage >= 0,
                 cards -> {
-                    if (cards.isEmpty()) return;
                     for (AbstractCard c : cards) {
-                        c.baseBlock *= magicNumber;
-                        c.isBlockModified = true;
+                        c.baseDamage *= magicNumber;
                         c.applyPowers();
                         c.flash();
                     }
@@ -46,5 +45,5 @@ public class BlockMagnify extends BaseCard {
     }
 
     @Override
-    public AbstractCard makeCopy() { return new BlockMagnify(); }
+    public AbstractCard makeCopy() { return new DamageMagnify(); }
 }

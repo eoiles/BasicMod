@@ -1,5 +1,6 @@
 package GameMaster;
 
+import GameMaster.cards.BaseCard;
 import basemod.BaseMod;
 import basemod.AutoAdd;                               // ← already added
 import basemod.interfaces.AddAudioSubscriber;
@@ -11,7 +12,6 @@ import basemod.interfaces.EditCardsSubscriber;        // ← already added
 import basemod.interfaces.EditRelicsSubscriber;       // ← NEW
 
 import GameMaster.character.MyCharacter;              // ← already added
-import GameMaster.cards.BaseCard;                     // ← already added
 import GameMaster.relics.BaseRelic;                   // ← NEW
 
 import GameMaster.util.GeneralUtils;

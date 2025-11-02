@@ -1,5 +1,6 @@
-package GameMaster.cards;
+package GameMaster.cards.General;
 
+import GameMaster.cards.BaseCard;
 import GameMaster.character.MyCharacter;
 import GameMaster.util.CardStats; // as requested
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;

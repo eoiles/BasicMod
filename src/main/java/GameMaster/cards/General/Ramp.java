@@ -1,5 +1,6 @@
-package GameMaster.cards;
+package GameMaster.cards.General;
 
+import GameMaster.cards.BaseCard;
 import GameMaster.character.MyCharacter;
 import GameMaster.powers.RampPower;
 import GameMaster.util.CardStats;
