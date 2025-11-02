@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class Splash extends BaseCard {
-    public static final String ID = makeID(Splash.class.getSimpleName());
+    public static final String ID = BaseCard.packedID(Splash.class);
 
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,

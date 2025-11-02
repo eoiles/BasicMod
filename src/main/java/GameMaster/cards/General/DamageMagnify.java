@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class DamageMagnify extends BaseCard {
-    public static final String ID = makeID(DamageMagnify.class.getSimpleName());
+    public static final String ID = BaseCard.packedID(DamageMagnify.class);
 
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,

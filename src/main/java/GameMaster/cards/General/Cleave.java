@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class Cleave extends BaseCard {
-    public static final String ID = makeID(Cleave.class.getSimpleName());
+    public static final String ID = BaseCard.packedID(Cleave.class);
 
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,

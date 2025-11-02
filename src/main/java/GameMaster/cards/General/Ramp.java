@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class Ramp extends BaseCard {
-    public static final String ID = makeID(Ramp.class.getSimpleName());
+    public static final String ID = BaseCard.packedID(Ramp.class);
 
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,

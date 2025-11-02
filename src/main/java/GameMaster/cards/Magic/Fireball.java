@@ -1,8 +1,9 @@
-package GameMaster.cards.General;
+package GameMaster.cards.Magic;
 
 import GameMaster.cards.BaseCard;
 import GameMaster.character.MyCharacter;
 import GameMaster.util.CardStats;
+
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -10,38 +11,36 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class NineNineNine extends BaseCard {
-    public static final String ID = BaseCard.packedID(NineNineNine.class);
+public class Fireball extends BaseCard {
+    // Pack-aware ID via your helper (=> "GameMaster:Magic:Fireball")
+    public static final String ID = BaseCard.packedID(Fireball.class);
 
-    // Card info: color, type, rarity, target, cost
+    // color, type, rarity, target, cost
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
             CardType.ATTACK,
-            CardRarity.RARE,       // SPECIAL so it won’t clog reward pools (spawn with console)
+            CardRarity.COMMON,
             CardTarget.ENEMY,
-            999                          // cost
+            1
     );
 
-    private static final int DAMAGE = 999;
-    private static final int UPG_DAMAGE =9000;         // no upgrade change
-
-    public NineNineNine() {
+    public Fireball() {
         super(ID, info);
-        setDamage(DAMAGE, UPG_DAMAGE);
-        // (no tags needed)
+        setDamage(8, 3); // base 8, upgrade +3 (=> 11)
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        // Deal !D! damage with a FIRE hit effect
         addToBot(new DamageAction(
                 m,
-                new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL),
-                AbstractGameAction.AttackEffect.BLUNT_HEAVY
+                new DamageInfo(p, this.damage, this.damageTypeForTurn),
+                AbstractGameAction.AttackEffect.FIRE
         ));
     }
 
     @Override
     public AbstractCard makeCopy() {
-        return new NineNineNine();
+        return new Fireball();
     }
 }

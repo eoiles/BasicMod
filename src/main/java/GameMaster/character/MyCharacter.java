@@ -1,8 +1,5 @@
 package GameMaster.character;
 
-import GameMaster.cards.General.BlockIncrease;
-import GameMaster.cards.General.DamageIncrease;
-import GameMaster.cards.General.EnergyDecrease;
 import GameMaster.relics.BloodGold;
 import basemod.BaseMod;
 import basemod.abstracts.CustomEnergyOrb;
@@ -38,40 +35,31 @@ public class MyCharacter extends CustomPlayer {
     public static final int ORB_SLOTS = 0;
 
     //Strings
-    private static final String ID = makeID("GameMaster"); //This should match whatever you have in the CharacterStrings.json file
+    private static final String ID = makeID("GameMaster"); // must match CharacterStrings.json key
     private static String[] getNames() { return CardCrawlGame.languagePack.getCharacterString(ID).NAMES; }
-    private static String[] getText() { return CardCrawlGame.languagePack.getCharacterString(ID).TEXT; }
+    private static String[] getText()  { return CardCrawlGame.languagePack.getCharacterString(ID).TEXT; }
 
-    //This static class is necessary to avoid certain quirks of Java classloading when registering the character.
     public static class Meta {
-        //These are used to identify your character, as well as your character's card color.
-        //Library color is basically the same as card color, but you need both because that's how the game was made.
-        @SpireEnum
-        public static PlayerClass YOUR_CHARACTER;
-        @SpireEnum(name = "CHARACTER_GRAY_COLOR") // These two MUST match. Change it to something unique for your character.
-        public static AbstractCard.CardColor CARD_COLOR;
+        @SpireEnum public static PlayerClass YOUR_CHARACTER;
+        @SpireEnum(name = "CHARACTER_GRAY_COLOR") public static AbstractCard.CardColor CARD_COLOR;
         @SpireEnum(name = "CHARACTER_GRAY_COLOR") @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
 
-        //Character select images
-        private static final String CHAR_SELECT_BUTTON = characterPath("select/button.png");
+        private static final String CHAR_SELECT_BUTTON   = characterPath("select/button.png");
         private static final String CHAR_SELECT_PORTRAIT = characterPath("select/portrait.png");
 
-        //Character card images
-        private static final String BG_ATTACK = characterPath("cardback/bg_attack.png");
-        private static final String BG_ATTACK_P = characterPath("cardback/bg_attack_p.png");
-        private static final String BG_SKILL = characterPath("cardback/bg_skill.png");
+        private static final String BG_ATTACK  = characterPath("cardback/bg_attack.png");
+        private static final String BG_ATTACK_P= characterPath("cardback/bg_attack_p.png");
+        private static final String BG_SKILL   = characterPath("cardback/bg_skill.png");
         private static final String BG_SKILL_P = characterPath("cardback/bg_skill_p.png");
-        private static final String BG_POWER = characterPath("cardback/bg_power.png");
+        private static final String BG_POWER   = characterPath("cardback/bg_power.png");
         private static final String BG_POWER_P = characterPath("cardback/bg_power_p.png");
         private static final String ENERGY_ORB = characterPath("cardback/energy_orb.png");
-        private static final String ENERGY_ORB_P = characterPath("cardback/energy_orb_p.png");
-        private static final String SMALL_ORB = characterPath("cardback/small_orb.png");
+        private static final String ENERGY_ORB_P=characterPath("cardback/energy_orb_p.png");
+        private static final String SMALL_ORB  = characterPath("cardback/small_orb.png");
 
-        //This is used to color *some* images, but NOT the actual cards. For that, edit the images in the cardback folder!
-        private static final Color cardColor = new Color(128f/255f, 128f/255f, 128f/255f, 1f);
+        private static final Color cardColor = new Color(128f/255f,128f/255f,128f/255f,1f);
 
-        //Methods that will be used in the main mod file
         public static void registerColor() {
             BaseMod.addColor(CARD_COLOR, cardColor,
                     BG_ATTACK, BG_SKILL, BG_POWER, ENERGY_ORB,
@@ -84,108 +72,83 @@ public class MyCharacter extends CustomPlayer {
         }
     }
 
-    //In-game images
-    private static final String SHOULDER_1 = characterPath("shoulder.png"); //Shoulder 1 and 2 are used at rest sites.
+    private static final String SHOULDER_1 = characterPath("shoulder.png");
     private static final String SHOULDER_2 = characterPath("shoulder2.png");
-    private static final String CORPSE = characterPath("corpse.png"); //Corpse is when you die.
+    private static final String CORPSE     = characterPath("corpse.png");
 
-    //Textures used for the energy orb
     private static final String[] orbTextures = {
-            characterPath("energyorb/layer1.png"), //When you have energy
+            characterPath("energyorb/layer1.png"),
             characterPath("energyorb/layer2.png"),
             characterPath("energyorb/layer3.png"),
             characterPath("energyorb/layer4.png"),
             characterPath("energyorb/layer5.png"),
-            characterPath("energyorb/cover.png"), //"container"
-            characterPath("energyorb/layer1d.png"), //When you don't have energy
+            characterPath("energyorb/cover.png"),
+            characterPath("energyorb/layer1d.png"),
             characterPath("energyorb/layer2d.png"),
             characterPath("energyorb/layer3d.png"),
             characterPath("energyorb/layer4d.png"),
             characterPath("energyorb/layer5d.png")
     };
 
-    //Speeds at which each layer of the energy orb texture rotates. Negative is backwards.
-    private static final float[] layerSpeeds = new float[] {
-            -20.0F,
-            20.0F,
-            -40.0F,
-            40.0F,
-            360.0F
-    };
+    private static final float[] layerSpeeds = new float[] { -20.0F, 20.0F, -40.0F, 40.0F, 360.0F };
 
-    //Actual character class code below this point
     public MyCharacter() {
         super(getNames()[0], Meta.YOUR_CHARACTER,
-                new CustomEnergyOrb(orbTextures, characterPath("energyorb/vfx.png"), layerSpeeds), //Energy Orb
-                new SpriterAnimation(characterPath("animation/default.scml"))); //Animation
+                new CustomEnergyOrb(orbTextures, characterPath("energyorb/vfx.png"), layerSpeeds),
+                new SpriterAnimation(characterPath("animation/default.scml")));
 
-        initializeClass(null,
-                SHOULDER_2,
-                SHOULDER_1,
-                CORPSE,
-                getLoadout(),
-                20.0F, -20.0F, 200.0F, 250.0F, //Character hitbox. x y position, then width and height.
-                new EnergyManager(ENERGY_PER_TURN));
+        initializeClass(null, SHOULDER_2, SHOULDER_1, CORPSE, getLoadout(),
+                20.0F, -20.0F, 200.0F, 250.0F, new EnergyManager(ENERGY_PER_TURN));
 
-        //Location for text bubbles. You can adjust it as necessary later. For most characters, these values are fine.
         dialogX = (drawX + 0.0F * Settings.scale);
         dialogY = (drawY + 220.0F * Settings.scale);
+    }
+
+    // pass-through helper: expects "Pack:Name"
+    private static String g(String packAndName) {
+        return makeID(packAndName);
     }
 
     @Override
     public ArrayList<String> getStartingDeck() {
         ArrayList<String> retVal = new ArrayList<>();
-        //List of IDs of cards for your starting deck.
-        //If you want multiple of the same card, you have to add it multiple times.
-        // 4 Strikes
-        retVal.add(makeID("Strike"));
-        retVal.add(makeID("Strike"));
-        retVal.add(makeID("Strike"));
-        retVal.add(makeID("Strike"));
-        // 4 Defends
-        retVal.add(makeID("Defend"));
-        retVal.add(makeID("Defend"));
-        retVal.add(makeID("Defend"));
-        retVal.add(makeID("Defend"));
 
-        // character-specific cards
-        retVal.add(DamageIncrease.ID);
-        retVal.add(BlockIncrease.ID);
-        retVal.add(EnergyDecrease.ID);
+        // 4x Strike from the General pack
+        retVal.add(g("General:Strike"));
+        retVal.add(g("General:Strike"));
+        retVal.add(g("General:Strike"));
+        retVal.add(g("General:Strike"));
 
+        // 4x Defend from the General pack
+        retVal.add(g("General:Defend"));
+        retVal.add(g("General:Defend"));
+        retVal.add(g("General:Defend"));
+        retVal.add(g("General:Defend"));
 
-//        retVal.add(makeID("Strike_Red"));
-//        retVal.add(makeID("Defend_Red"));
+        // character-specific starters (also in General pack)
+        retVal.add(g("General:DamageIncrease"));
+        retVal.add(g("General:BlockIncrease"));
+        retVal.add(g("General:EnergyDecrease"));
+
         return retVal;
     }
 
     @Override
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
-        //IDs of starting relics. You can have multiple, but one is recommended.
-
         retVal.add(BloodGold.ID);
-
         return retVal;
     }
 
     @Override
     public AbstractCard getStartCardForEvent() {
-        //This card is used for the Gremlin card matching game.
-        //It should be a non-strike non-defend starter card, but it doesn't have to be.
         return new Strike_Red();
     }
 
-    /*- Below this is methods that you should *probably* adjust, but don't have to. -*/
-
-    @Override
-    public int getAscensionMaxHPLoss() {
-        return 4; //Max hp reduction at ascension 14+
-    }
+    @Override public int getAscensionMaxHPLoss() { return 4; }
 
     @Override
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect() {
-        //These attack effects will be used when you attack the heart.
         return new AbstractGameAction.AttackEffect[] {
                 AbstractGameAction.AttackEffect.SLASH_VERTICAL,
                 AbstractGameAction.AttackEffect.SLASH_HEAVY,
@@ -193,64 +156,27 @@ public class MyCharacter extends CustomPlayer {
         };
     }
 
-    private final Color cardRenderColor = Color.LIGHT_GRAY.cpy(); //Used for some vfx on moving cards (sometimes) (maybe)
-    private final Color cardTrailColor = Color.LIGHT_GRAY.cpy(); //Used for card trail vfx during gameplay.
-    private final Color slashAttackColor = Color.LIGHT_GRAY.cpy(); //Used for a screen tint effect when you attack the heart.
-    @Override
-    public Color getCardRenderColor() {
-        return cardRenderColor;
-    }
-    @Override
-    public Color getCardTrailColor() {
-        return cardTrailColor;
-    }
-    @Override
-    public Color getSlashAttackColor() {
-        return slashAttackColor;
-    }
+    private final Color cardRenderColor = Color.LIGHT_GRAY.cpy();
+    private final Color cardTrailColor  = Color.LIGHT_GRAY.cpy();
+    private final Color slashAttackColor= Color.LIGHT_GRAY.cpy();
+    @Override public Color getCardRenderColor() { return cardRenderColor; }
+    @Override public Color getCardTrailColor()  { return cardTrailColor;  }
+    @Override public Color getSlashAttackColor(){ return slashAttackColor; }
 
-    @Override
-    public BitmapFont getEnergyNumFont() {
-        //Font used to display your current energy.
-        //energyNumFontRed, Blue, Green, and Purple are used by the basegame characters.
-        //It is possible to make your own, but not convenient.
-        return FontHelper.energyNumFontRed;
-    }
+    @Override public BitmapFont getEnergyNumFont() { return FontHelper.energyNumFontRed; }
 
     @Override
     public void doCharSelectScreenSelectEffect() {
-        //This occurs when you click the character's button in the character select screen.
-        //See SoundMaster for a full list of existing sound effects, or look at BaseMod's wiki for adding custom audio.
         CardCrawlGame.sound.playA("ATTACK_DAGGER_2", MathUtils.random(-0.2F, 0.2F));
         CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.SHORT, false);
     }
-    @Override
-    public String getCustomModeCharacterButtonSoundKey() {
-        //Similar to doCharSelectScreenSelectEffect, but used for the Custom mode screen. No shaking.
-        return "ATTACK_DAGGER_2";
-    }
+    @Override public String getCustomModeCharacterButtonSoundKey() { return "ATTACK_DAGGER_2"; }
 
-    //Don't adjust these four directly, adjust the contents of the CharacterStrings.json file.
-    @Override
-    public String getLocalizedCharacterName() {
-        return getNames()[0];
-    }
-    @Override
-    public String getTitle(PlayerClass playerClass) {
-        return getNames()[1];
-    }
-    @Override
-    public String getSpireHeartText() {
-        return getText()[1];
-    }
-    @Override
-    public String getVampireText() {
-        return getText()[2]; //Generally, the only difference in this text is how the vampires refer to the player.
-    }
+    @Override public String getLocalizedCharacterName() { return getNames()[0]; }
+    @Override public String getTitle(PlayerClass playerClass) { return getNames()[1]; }
+    @Override public String getSpireHeartText() { return getText()[1]; }
+    @Override public String getVampireText() { return getText()[2]; }
 
-    /*- You shouldn't need to edit any of the following methods. -*/
-
-    //This is used to display the character's information on the character selection screen.
     @Override
     public CharSelectInfo getLoadout() {
         return new CharSelectInfo(getNames()[0], getText()[0],
@@ -258,14 +184,7 @@ public class MyCharacter extends CustomPlayer {
                 getStartingRelics(), getStartingDeck(), false);
     }
 
-    @Override
-    public AbstractCard.CardColor getCardColor() {
-        return Meta.CARD_COLOR;
-    }
+    @Override public AbstractCard.CardColor getCardColor() { return Meta.CARD_COLOR; }
 
-    @Override
-    public AbstractPlayer newInstance() {
-        //Makes a new instance of your character class.
-        return new MyCharacter();
-    }
+    @Override public AbstractPlayer newInstance() { return new MyCharacter(); }
 }

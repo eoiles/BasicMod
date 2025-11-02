@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class WildCard extends BaseCard {
-    public static final String ID = makeID(WildCard.class.getSimpleName());
+    public static final String ID = BaseCard.packedID(WildCard.class);
 
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,

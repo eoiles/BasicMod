@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class Strike extends BaseCard {
-    public static final String ID = makeID(Strike.class.getSimpleName());
+    public static final String ID = BaseCard.packedID(Strike.class);
 
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,

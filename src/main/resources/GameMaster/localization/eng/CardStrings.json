@@ -1,5 +1,5 @@
 {
-  "${modID}:ExampleCard": {
+  "${modID}:General:ExampleCard": {
     "NAME": "Name",
     "DESCRIPTION": "Description. NL Second line.",
     "UPGRADE_DESCRIPTION": "This will automatically be used if the card is upgraded. Remove it if unneeded.",
@@ -9,120 +9,125 @@
       "Blizzard is a good example for this."
     ]
   },
-  "${modID}:NineNineNine": {
+  "${modID}:General:NineNineNine": {
     "NAME": "Nine Nine Nine",
     "DESCRIPTION": "Deal !D! damage."
   },
-  "${modID}:Strike": {
+  "${modID}:General:Strike": {
     "NAME": "Strike",
     "DESCRIPTION": "Deal !D! damage."
   },
-  "${modID}:Defend": {
+  "${modID}:General:Defend": {
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block."
   },
-  "${modID}:DamageMagnify": {
+  "${modID}:General:DamageMagnify": {
     "NAME": "Damage Magnify",
     "DESCRIPTION": "Choose a card in your hand. Multiply its damage by !M! this combat. Exhaust."
   },
-  "${modID}:EnergyDiminish": {
+  "${modID}:General:EnergyDiminish": {
     "NAME": "Energy Diminish",
     "DESCRIPTION": "Choose a card in your hand. Halve its cost for this combat (round to even). NL Exhaust."
   },
-  "${modID}:DamageIncrease": {
+  "${modID}:General:DamageIncrease": {
     "NAME": "Damage Increase",
     "DESCRIPTION": "Choose a card in your hand with damage. It gains !M! damage for this combat."
   },
-  "${modID}:BlockIncrease": {
+  "${modID}:General:BlockIncrease": {
     "NAME": "Block Increase",
     "DESCRIPTION": "Choose a card in your hand with Block. It gains !M! Block for this combat."
   },
-  "${modID}:EnergyDecrease": {
+  "${modID}:General:EnergyDecrease": {
     "NAME": "Energy Decrease",
     "DESCRIPTION": "Choose a card in your hand. Reduce its cost by !M! for this combat."
   },
-  "${modID}:BlockMagnify": {
+  "${modID}:General:BlockMagnify": {
     "NAME": "Block Magnify",
     "DESCRIPTION": "Choose a card in your hand. It gains !M!x Block for this combat. NL Exhaust."
   },
-  "${modID}:HPShrink": {
+  "${modID}:General:HPShrink": {
     "NAME": "HP Shrink",
     "DESCRIPTION": "Set an enemy's HP to !M! of its current HP (round to even). NL Exhaust."
   },
-  "${modID}:Execute": {
+  "${modID}:General:Execute": {
     "NAME": "Execute",
     "DESCRIPTION": "If the target has !M! %HP or less, kill it."
   },
-  "${modID}:TaiChi": {
+  "${modID}:General:TaiChi": {
     "NAME": "Tai Chi",
     "DESCRIPTION": "Whenever you play an Attack, gain !M! Block. Whenever you play a non-attack card, deal !M! damage to a random enemy."
   },
-  "${modID}:Purify": {
+  "${modID}:General:Purify": {
     "NAME": "Purify",
     "DESCRIPTION": "Remove all buffs from an enemy. NL Exhaust."
   },
-  "${modID}:FreeStrike": {
+  "${modID}:General:FreeStrike": {
     "NAME": "Free Strike",
     "DESCRIPTION": "Deal !D! damage. NL Draw !M! card."
   },
-  "${modID}:HeavyStrike": {
+  "${modID}:General:HeavyStrike": {
     "NAME": "Heavy Strike",
     "DESCRIPTION": "Deal !D! damage."
   },
-  "${modID}:Cleave": {
+  "${modID}:General:Cleave": {
     "NAME": "Cleave",
     "DESCRIPTION": "Deal !D! damage to an enemy. Deal 50% of that damage to all other enemies."
   },
-  "${modID}:Splash": {
+  "${modID}:General:Splash": {
     "NAME": "Splash",
     "DESCRIPTION": "Gain Splash.Whenever you deal Attack damage, deal #b%d%% of that damage to all other enemies."
   },
-  "${modID}:Negate": {
+  "${modID}:General:Negate": {
     "NAME": "Negate",
     "DESCRIPTION": "Negate the target enemy's intent. NL Exhaust."
   },
 
-  "${modID}:WildCard": {
+  "${modID}:General:WildCard": {
     "NAME": "WildCard",
     "DESCRIPTION": "Choose a card from your deck. This becomes a copy of it for the rest of this combat."
   }
 ,
-  "${modID}:PotOfGreed": {
+  "${modID}:General:PotOfGreed": {
     "NAME": "Pot of Greed",
     "DESCRIPTION": "Draw !M! cards. NL Exhaust."
   },
 
-  "${modID}:Ramp": {
+  "${modID}:General:Ramp": {
     "NAME": "Ramp",
     "DESCRIPTION": "At the start of your turn, gain !M! [E]. NL Exhaust."
   },
-  "${modID}:Chance": {
+  "${modID}:General:Chance": {
     "NAME": "Chance",
     "DESCRIPTION": "Discard 1. NL Draw !M!."
   },
-  "${modID}:LossAndOverflow": {
+  "${modID}:General:LossAndOverflow": {
     "NAME": "Loss and Overflow",
     "DESCRIPTION": "At the start of your turn, after you draw, gain Strength equal to !M! minus the total cost of cards in your hand (X is capped at !M!)."
   },
-  "${modID}:ChaosOrb": {
+  "${modID}:General:ChaosOrb": {
     "NAME": "Chaos Orb",
     "DESCRIPTION": "Whenever you play an Attack, apply !M! random debuff to the target."
   },
 
-  "${modID}:DronePack": {
+  "${modID}:General:DronePack": {
     "NAME": "Drone Pack",
     "DESCRIPTION": "Gain !M! Orb Slots. NL Channel !M! random orbs."
   },
 
-  "${modID}:ShowHand": {
+  "${modID}:General:ShowHand": {
     "NAME": "Show Hand",
     "DESCRIPTION": "Deal !D! damage. Then for each card in your hand: discard a random card and deal !D! damage. NL Exhaust."
   },
 
-  "${modID}:Fate": {
+  "${modID}:General:Fate": {
     "NAME": "Fate",
     "DESCRIPTION": "Play !M! random cards from the entire card pool. NL Exhaust."
-  }
+  },
 
+  "${modID}:Magic:Fireball": {
+    "NAME": "Fireball",
+    "DESCRIPTION": "Deal !D! damage.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage."
+  }
 
 }

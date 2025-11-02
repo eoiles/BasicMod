@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 
 public class ShowHand extends BaseCard {
-    public static final String ID = makeID(ShowHand.class.getSimpleName());
+    public static final String ID = BaseCard.packedID(ShowHand.class);
 
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,

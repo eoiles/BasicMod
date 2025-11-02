@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class PotOfGreed extends BaseCard {
-    public static final String ID = makeID(PotOfGreed.class.getSimpleName());
+    public static final String ID = BaseCard.packedID(PotOfGreed.class);
 
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,

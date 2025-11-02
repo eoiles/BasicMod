@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Purify extends BaseCard {
-    public static final String ID = makeID(Purify.class.getSimpleName());
+    public static final String ID = BaseCard.packedID(Purify.class);
 
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,

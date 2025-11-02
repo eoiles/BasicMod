@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class FreeStrike extends BaseCard {
-    public static final String ID = makeID(FreeStrike.class.getSimpleName());
+    public static final String ID = BaseCard.packedID(FreeStrike.class);
 
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,

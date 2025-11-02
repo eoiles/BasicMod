@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class Chance extends BaseCard {
-    public static final String ID = makeID(Chance.class.getSimpleName());
+    public static final String ID = BaseCard.packedID(Chance.class);
 
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,

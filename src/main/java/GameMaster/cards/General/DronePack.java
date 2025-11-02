@@ -15,7 +15,7 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.orbs.Plasma;
 
 public class DronePack extends BaseCard {
-    public static final String ID = makeID(DronePack.class.getSimpleName());
+    public static final String ID = BaseCard.packedID(DronePack.class);
 
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,

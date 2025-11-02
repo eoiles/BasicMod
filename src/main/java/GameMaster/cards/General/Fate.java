@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import java.util.ArrayList;
 
 public class Fate extends BaseCard {
-    public static final String ID = makeID(Fate.class.getSimpleName());
+    public static final String ID = BaseCard.packedID(Fate.class);
 
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
