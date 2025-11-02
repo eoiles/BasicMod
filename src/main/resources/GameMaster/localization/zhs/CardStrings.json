@@ -1,0 +1,116 @@
+{
+  "${modID}:ExampleCard": {
+    "NAME": "示例卡",
+    "DESCRIPTION": "描述。 NL 第二行。",
+    "UPGRADE_DESCRIPTION": "当此牌被升级时会自动使用这段文本。如不需要可删除。",
+    "EXTENDED_DESCRIPTION": [
+      "你可以把更多的文本放在这里。",
+      "如果你需要这样做的话。",
+      "“Blizzard（暴风雪）”就是一个很好的例子。"
+    ]
+  },
+  "${modID}:NineNineNine": {
+    "NAME": "九百九十九",
+    "DESCRIPTION": "造成 !D! 点伤害。"
+  },
+  "${modID}:Strike": {
+    "NAME": "打击",
+    "DESCRIPTION": "造成 !D! 点伤害。"
+  },
+  "${modID}:Defend": {
+    "NAME": "防御",
+    "DESCRIPTION": "获得 !B! 点格挡。"
+  },
+  "${modID}:DamageMagnify": {
+    "NAME": "伤害倍增",
+    "DESCRIPTION": "选择你手牌中的一张牌。其伤害在本场战斗中变为 !M! 倍。 NL 消耗。"
+  },
+  "${modID}:EnergyDiminish": {
+    "NAME": "能量减半",
+    "DESCRIPTION": "选择你手牌中的一张牌。本场战斗其费用减半（银行家舍入，五取偶）。 NL 消耗。"
+  },
+  "${modID}:DamageIncrease": {
+    "NAME": "伤害提升",
+    "DESCRIPTION": "选择一张带有伤害的手牌。它在本场战斗中获得 !M! 点伤害。"
+  },
+  "${modID}:BlockIncrease": {
+    "NAME": "格挡提升",
+    "DESCRIPTION": "选择一张带有格挡的手牌。它在本场战斗中获得 !M! 点格挡。"
+  },
+  "${modID}:EnergyDecrease": {
+    "NAME": "费用降低",
+    "DESCRIPTION": "选择你手牌中的一张牌。本场战斗其费用降低 !M! 。"
+  },
+  "${modID}:BlockMagnify": {
+    "NAME": "格挡倍增",
+    "DESCRIPTION": "选择你手牌中的一张牌。它在本场战斗中获得 !M! 倍格挡。 NL 消耗。"
+  },
+  "${modID}:HPShrink": {
+    "NAME": "生命缩减",
+    "DESCRIPTION": "将一名敌人的生命值设为其当前生命值的 !M!（银行家舍入，五取偶）。 NL 消耗。"
+  },
+  "${modID}:Execute": {
+    "NAME": "处决",
+    "DESCRIPTION": "如果目标生命值不超过其最大生命值的 !M!%%，将其斩杀。"
+  },
+  "${modID}:TaiChi": {
+    "NAME": "太极",
+    "DESCRIPTION": "每当你打出一张攻击牌，获得 !M! 点格挡。每当你打出一张非攻击牌，对一个随机敌人造成 !M! 点伤害。"
+  },
+  "${modID}:Purify": {
+    "NAME": "净化",
+    "DESCRIPTION": "移除一名敌人的所有增益。 NL 消耗。"
+  },
+  "${modID}:FreeStrike": {
+    "NAME": "自由打击",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 抽 !M! 张牌。"
+  },
+  "${modID}:HeavyStrike": {
+    "NAME": "重击",
+    "DESCRIPTION": "造成 !D! 点伤害。"
+  },
+  "${modID}:Cleave": {
+    "NAME": "顺劈",
+    "DESCRIPTION": "对一名敌人造成 !D! 点伤害。对其他所有敌人造成该伤害的 50%。"
+  },
+  "${modID}:Splash": {
+    "NAME": "飞溅",
+    "DESCRIPTION": "获得“飞溅”。每当你用攻击造成伤害时，对其他所有敌人造成该伤害的 #b%d%%。"
+  },
+  "${modID}:Negate": {
+    "NAME": "否定",
+    "DESCRIPTION": "否定目标敌人的意图。 NL 消耗。"
+  },
+  "${modID}:WildCard": {
+    "NAME": "百变",
+    "DESCRIPTION": "从你的牌组中选择一张牌。本牌在本场战斗中变为其复制。"
+  },
+  "${modID}:PotOfGreed": {
+    "NAME": "强欲之壶",
+    "DESCRIPTION": "抽 !M! 张牌。 NL 消耗。"
+  },
+  "${modID}:Ramp": {
+    "NAME": "加速",
+    "DESCRIPTION": "在你的回合开始时，获得 !M! [E]。 NL 消耗。"
+  },
+  "${modID}:Chance": {
+    "NAME": "机运",
+    "DESCRIPTION": "弃置 1 张牌。 NL 抽 !M! 张。"
+  },
+  "${modID}:LossAndOverflow": {
+    "NAME": "亏损与溢出",
+    "DESCRIPTION": "在你的回合开始、抓牌之后，获得等于 !M! 减去你手中所有牌总费用的力量（X 以上限 !M! 为准）。"
+  },
+  "${modID}:ChaosOrb": {
+    "NAME": "混沌宝珠",
+    "DESCRIPTION": "每当你打出一张攻击牌时，对目标施加 !M! 个随机减益。"
+  },
+  "${modID}:DronePack": {
+    "NAME": "无人机包",
+    "DESCRIPTION": "获得 !M! 个法球栏位。 NL 随机引导 !M! 个法球。"
+  },
+  "${modID}:ShowHand": {
+    "NAME": "亮出底牌",
+    "DESCRIPTION": "造成 !D! 点伤害。然后对于你手中的每张牌：随机弃置 1 张牌并再造成 !D! 点伤害。 NL 消耗。"
+  }
+}

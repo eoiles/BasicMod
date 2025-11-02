@@ -111,7 +111,17 @@
 
   "${modID}:DronePack": {
     "NAME": "Drone Pack",
-    "DESCRIPTION": "Channel !M! random #yOrbs."
+    "DESCRIPTION": "Gain !M! Orb Slots. NL Channel !M! random orbs."
+  },
+
+  "${modID}:ShowHand": {
+    "NAME": "Show Hand",
+    "DESCRIPTION": "Deal !D! damage. Then for each card in your hand: discard a random card and deal !D! damage. NL Exhaust."
+  },
+
+  "${modID}:Fate": {
+    "NAME": "Fate",
+    "DESCRIPTION": "Play !M! random cards from the entire card pool. NL Exhaust."
   }
 
 
