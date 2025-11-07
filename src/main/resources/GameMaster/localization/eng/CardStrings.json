@@ -128,6 +128,19 @@
     "NAME": "Fireball",
     "DESCRIPTION": "Deal !D! damage.",
     "UPGRADE_DESCRIPTION": "Deal !D! damage."
+  },
+
+
+
+  "${modID}:Math:PrimeStrike": {
+    "NAME": "Prime Strike",
+    "DESCRIPTION": "Deal next prime damage.",
+    "UPGRADE_DESCRIPTION": "Deal next prime damage."
+  },
+  "${modID}:Math:PrimeDefend": {
+    "NAME": "Prime Defend",
+    "DESCRIPTION": "Gain next prime Block.",
+    "UPGRADE_DESCRIPTION": "Gain next prime Block."
   }
 
 }

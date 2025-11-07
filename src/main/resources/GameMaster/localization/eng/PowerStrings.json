@@ -37,7 +37,16 @@
       "Whenever you play an Attack, apply a random debuff to the target enemy.",
       "Whenever you play an Attack, apply #b%d random debuffs to the target enemy."
     ]
+  },
+
+  "${modID}:PrimeStack": {
+    "NAME": "Prime Stack",
+    "DESCRIPTIONS": [
+      "Next prime number is %1$d."
+    ]
   }
+
+
 
 
 }

@@ -114,21 +114,25 @@ public class MyCharacter extends CustomPlayer {
         ArrayList<String> retVal = new ArrayList<>();
 
         // 4x Strike from the General pack
-        retVal.add(g("General:Strike"));
-        retVal.add(g("General:Strike"));
-        retVal.add(g("General:Strike"));
-        retVal.add(g("General:Strike"));
+        //retVal.add(g("General:Strike"));
 
         // 4x Defend from the General pack
-        retVal.add(g("General:Defend"));
-        retVal.add(g("General:Defend"));
-        retVal.add(g("General:Defend"));
-        retVal.add(g("General:Defend"));
+        //retVal.add(g("General:Defend"));
+
+        //math cards
+        retVal.add(makeID("Math:PrimeStrike"));
+        retVal.add(makeID("Math:PrimeDefend"));
+        retVal.add(makeID("Math:PrimeStrike"));
+        retVal.add(makeID("Math:PrimeDefend"));
+        retVal.add(makeID("Math:PrimeStrike"));
+        retVal.add(makeID("Math:PrimeDefend"));
+        retVal.add(makeID("Math:PrimeStrike"));
+        retVal.add(makeID("Math:PrimeDefend"));
 
         // character-specific starters (also in General pack)
-        retVal.add(g("General:DamageIncrease"));
-        retVal.add(g("General:BlockIncrease"));
-        retVal.add(g("General:EnergyDecrease"));
+        //retVal.add(g("General:DamageIncrease"));
+        //retVal.add(g("General:BlockIncrease"));
+        //retVal.add(g("General:EnergyDecrease"));
 
         return retVal;
     }

@@ -107,12 +107,47 @@ public class TextureLoader {
         textures.put(textureString, texture);
     }
 
-    public static Texture getPowerTexture(final String powerName) {
-        String textureString = powerPath(powerName + ".png");
-        return getTexture(textureString);
+    // ---------- FIXED: Power textures are NOT pack-aware ----------
+    // If a power name contains "Pack:Name", we strip to the trailing segment ("Name").
+    // If the specific icon is missing, we fall back to the BaseMod default "example.png".
+    private static String stripPackSegment(final String powerName) {
+        int idx = powerName.lastIndexOf(':');
+        return idx >= 0 ? powerName.substring(idx + 1) : powerName;
     }
+
+    public static Texture getPowerTexture(final String powerName) {
+        // 1) Try exact file (works for "LossAndOverflow")
+        String primary = powerPath(powerName + ".png");
+        Texture t = getTextureNull(primary);
+        if (t != null) return t;
+
+        // 2) If a pack-like segment snuck in (e.g., "Math:PrimeStack"), use only the trailing name
+        String simpleName = stripPackSegment(powerName);
+        if (!simpleName.equals(powerName)) {
+            String simple = powerPath(simpleName + ".png");
+            t = getTextureNull(simple);
+            if (t != null) return t;
+        }
+
+        // 3) Fallback to BaseMod-style default icon
+        String fallback = powerPath("example.png");
+        return getTexture(fallback); // let this throw only if your default truly doesn't exist
+    }
+
     public static Texture getHiDefPowerTexture(final String powerName) {
-        String textureString = powerPath("large/" + powerName + ".png");
-        return getTextureNull(textureString);
+        // Hi-def is optional; mirror the same stripping but return null if not found.
+        String primary = powerPath("large/" + powerName + ".png");
+        Texture t = getTextureNull(primary);
+        if (t != null) return t;
+
+        String simpleName = stripPackSegment(powerName);
+        if (!simpleName.equals(powerName)) {
+            String simple = powerPath("large/" + simpleName + ".png");
+            t = getTextureNull(simple);
+            if (t != null) return t;
+        }
+
+        // No large icon: return null so BasePower uses the 48px (or fallback) texture.
+        return null;
     }
 }
